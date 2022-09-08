@@ -71,7 +71,21 @@ exports.create = async (req, res) => {
                     });
                 };
             };
-        };
+        } else {
+            var numberOfMatch = saveTeam.length * (saveTeam.length - 1);
+            var listScheduleTeam = [];
+            for (let i = 0; i < saveTeam.length; i++) {
+                for (let j = 0; j < saveTeam.length; j++) {
+                    if (saveTeam[i] !== saveTeam[j]) {
+                        listScheduleTeam.push({
+                            team: saveTeam[i].id
+                        }, {
+                            team: saveTeam[j].id
+                        })
+                    }
+                }
+            }
+        }
 
         let listMatch = [];
         for (let i = 0; i < numberOfMatch; i++) {
