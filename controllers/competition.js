@@ -32,7 +32,7 @@ exports.create = async (req, res) => {
     try {
         transaction = await sequelize.transaction();
 
-        let data = {
+        var data = {
             name: req.body.name,
             type: req.body.type,
             location: req.body.location,
@@ -42,11 +42,11 @@ exports.create = async (req, res) => {
         };
 
         const saveCompetition = await competition.create({
-            name: req.body.name,
-            type: req.body.type,
-            location: req.body.location,
-            start: req.body.start,
-            end: req.body.end
+            name: data.name,
+            type: data.type,
+            location: data.location,
+            start: data.start,
+            end: data.end
         }, { transaction });
 
         let splitTeam = data.team.split(', ');
