@@ -19,7 +19,7 @@ app.use('/', (req, res, next) => {
 })
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use('/api', require('./api'))
+app.use('/api', require('./controllers'))
 
 
 app.listen(port, () => console.log(`matchapp listening on port ${port}!`));
